@@ -5,6 +5,8 @@
 
     <string-array name="ui_array">
         <item>All</item>
+        <item>Net Work</item>
+        <item>ImageLoader</item>
         <item>ListView</item>
         <item>Custom View</item>
     </string-array>
