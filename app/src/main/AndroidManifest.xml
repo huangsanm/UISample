@@ -1,23 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.huashengmi.ui.android">
+    package="com.huashengmi.ui.android" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".app.UiSampleApp"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".ui.MainActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.download.MultiDownloadActivity"
+            android:label="@string/title_activity_single_download" >
+        </activity>
+
+        <provider
+            android:name=".ui.download.db.DownLoadContentProvider"
+            android:authorities="com.huashengmi.ui.android.ui.download"
+            android:enabled="true"
+            android:exported="true" >
+        </provider>
+
+        <service
+            android:name=".ui.download.common.DownloadService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
 
         <activity
-            android:name="com.huashengmi.ui.android.ui.MainActivity"
-            android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"></action>
-                <category android:name="android.intent.category.LAUNCHER"></category>
-            </intent-filter>
+            android:name=".ui.download.DownloadTaskActivity"
+            android:label="@string/title_activity_download_task" >
         </activity>
     </application>
 

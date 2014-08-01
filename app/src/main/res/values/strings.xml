@@ -6,7 +6,7 @@
     <string-array name="ui_array">
         <item>All</item>
         <item>Net Work</item>
-        <item>ImageLoader</item>
+        <item>Loader Image</item>
         <item>ListView</item>
         <item>Custom View</item>
     </string-array>
@@ -22,5 +22,8 @@
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_single_download">SingleDownloadActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_download_task">DownloadTaskActivity</string>
 
 </resources>
