@@ -50,7 +50,10 @@ public class DownloadHelper {
             item.setId((int) downloadID);
 
             Intent intent = new Intent(mContext, DownloadService.class);
-            intent.putExtra(DownloadColumn.TABLE_NAME, item);
+            intent.putExtra(DownloadColumn._ID, (int) downloadID);
+            intent.putExtra(DownloadColumn.NAME, item.getName());
+            intent.putExtra(DownloadColumn.URI, item.getUri());
+            intent.putExtra(DownloadColumn.SUFFIX, item.getSuffix());
             intent.putExtra(DownloadColumn.STATUS, DownloadStatus.STATUS_RUNNING);
             mContext.startService(intent);
         }

@@ -26,6 +26,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.RandomAccessFile;
+import java.util.Map;
 
 /**
  * Created by huangsm on 2014/7/28 0028.
@@ -51,34 +52,49 @@ public class DownloadThread extends Thread {
     //private Notification mNotification;
     private NotificationCompat.Builder mBuilder;
     private File mTempFile;
-    private DownloadItem mDownloadItem;
+    //private DownloadItem mDownloadItem;
     private DownloadManager mDownloadManager;
     private NotificationManager mNotificationManager;
     private int mTempSize;
-
-    //private int mProgress;
+    //标题
+    private String mTitle;
+    //下载ID
+    private int mDownloadID;
+    //下载地址
+    private String mUri;
+    //后缀名
+    private String mSuffix;
 
     //4.0+
-    public DownloadThread(Context context, int downloadID, NotificationCompat.Builder builder) {
+    public DownloadThread(Context context, int downloadID, String title, String uri, String suffix, NotificationCompat.Builder builder) {
         mContext = context;
-        //mDownloadID = downloadID;
+        mDownloadID = downloadID;
+        mUri = uri;
+        mSuffix = suffix;
+        mTitle = title;
+
+        Globals.log(mDownloadID + "," + mUri + "," + mSuffix + "," + mTitle);
+
         mBuilder = builder;
         mNotificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
 
         mDownloadManager = new DownloadManager(mContext.getContentResolver());
-        mDownloadItem = mDownloadManager.queryTask(downloadID);
-        Globals.log("DownloadThread:" + mDownloadItem);
-        if (mDownloadItem != null) {
+        mTempFile = new File(DownloadUtils.getFileDir(), mTitle + TEMP_SUFFIX);
+
+
+        /*mDownloadItem = mDownloadManager.queryTask(downloadID);
+        Globals.log("DownloadThread:" + mDownloadItem);*/
+       // if (mDownloadItem != null) {
             //download finish update path value
-            mTempFile = new File(mDownloadItem.getPath(), mDownloadItem.getName() + TEMP_SUFFIX);
-        }
+
+       // }
 
         //notify
         notifyNotification(NOTIFICATION_STATUS_FLAG_NORMAL, "", 100, 0);
     }
 
-    //4.0+
-    public DownloadThread(Context context, DownloadItem item, NotificationCompat.Builder builder) {
+
+    /*public DownloadThread(Context context, DownloadItem item, NotificationCompat.Builder builder) {
         mContext = context;
         mBuilder = builder;
         mNotificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -93,7 +109,7 @@ public class DownloadThread extends Thread {
 
         //notify
         notifyNotification(NOTIFICATION_STATUS_FLAG_NORMAL, "", 100, 0);
-    }
+    }*/
 
     /*//兼容低版本
     public DownloadThread(Context context, int downloadID, Notification notification){
@@ -111,8 +127,8 @@ public class DownloadThread extends Thread {
             //TODO:
             // aClient = new DefaultHttpClient();
             aClient = AndroidHttpClient.newInstance("Linux; Android");
-            Globals.log("AndroidHttpClient:" + mDownloadItem.getUri());
-            HttpGet request = new HttpGet(mDownloadItem.getUri());
+            Globals.log("AndroidHttpClient:" + mUri);
+            HttpGet request = new HttpGet(mUri);
             HttpResponse response = aClient.execute(request);
             //302、301下载跳转
             Globals.log("AndroidHttpClient:" + response.getStatusLine().getStatusCode());
@@ -127,7 +143,7 @@ public class DownloadThread extends Thread {
                 //更新数据库
                 ContentValues values = new ContentValues();
                 values.put(DownloadColumn.TOTAL_BYTE, totalSize);
-                int result = mDownloadManager.updateTask(mDownloadItem.getId(), values);
+                int result = mDownloadManager.updateTask(mDownloadID, values);
                 if (result > 0) {
                     Log.i(TAG, "update database:" + result);
                 }
@@ -155,12 +171,12 @@ public class DownloadThread extends Thread {
             long updateStart = System.currentTimeMillis();
             long updateDelta = 0;
             int progress = 0;
-            //boolean finish = true;
+            boolean finish = true;
             while (true) {
                 //check download status
                 Globals.log(checkDownloadCancel());
                 if (checkDownloadCancel()) {
-                    //finish = false;
+                    finish = false;
                     notifyNotification(NOTIFICATION_STATUS_FLAG_DELETE, "下载已被取消", 0, 0);
                     aClient.close();
                     break;
@@ -168,7 +184,7 @@ public class DownloadThread extends Thread {
 
                 Globals.log(checkDownloadPause());
                 if (checkDownloadPause()) {
-                    //finish = false;
+                    finish = false;
                     notifyNotification(NOTIFICATION_STATUS_FLAG_DELETE, "暂停下载", 0, 0);
                     aClient.close();
                     break;
@@ -189,24 +205,19 @@ public class DownloadThread extends Thread {
 
                     //更新下载进度
                     updateProgress(progress);
-
-                    //下载完成
-                    Globals.log("finish:" + progress + "," + totalSize + ":" + (progress == totalSize));
-                    if (progress == (int) totalSize) {
-                        notifyNotification(NOTIFICATION_STATUS_FLAG_DONE, "下载完成，点此安装", progress, (int) totalSize);
-                    }
-
                 }
-
                 //时间
                 updateDelta = System.currentTimeMillis() - updateStart;
             }
             is.close();
-            /*if(finish){
+            //下载完成
+            Globals.log("finish:" + progress + "," + totalSize + ":" + (progress == totalSize));
+            if (finish) {
                 notifyNotification(NOTIFICATION_STATUS_FLAG_DONE, "下载完成，点此安装", progress, (int) totalSize);
-            }*/
-        } catch (IOException e) {
+            }
+        } catch (Exception e) {
             e.printStackTrace();
+            notifyNotification(NOTIFICATION_STATUS_FLAG_ERROR, "下载出错：" + e.getMessage(), 0, 0);
         } finally {
             try {
                 aClient.close();
@@ -225,7 +236,7 @@ public class DownloadThread extends Thread {
      * @return
      */
     private boolean checkDownloadCancel() {
-        return mDownloadManager.checkTaskStatus(mDownloadItem.getId(), DownloadStatus.STATUS_DELETEED);
+        return mDownloadManager.checkTaskStatus(mDownloadID, DownloadStatus.STATUS_DELETEED);
     }
 
     /**
@@ -234,13 +245,13 @@ public class DownloadThread extends Thread {
      * @return
      */
     private boolean checkDownloadPause() {
-        return mDownloadManager.checkTaskStatus(mDownloadItem.getId(), DownloadStatus.STATUS_PAUSED);
+        return mDownloadManager.checkTaskStatus(mDownloadID, DownloadStatus.STATUS_PAUSED);
     }
 
     private void updateProgress(long progress) {
         ContentValues values = new ContentValues();
         values.put(DownloadColumn.CURRENT_BYTE, progress);
-        int result = mDownloadManager.updateTask(mDownloadItem.getId(), values);
+        int result = mDownloadManager.updateTask(mDownloadID, values);
         if (result > 0) {
             Globals.log("updateProgress" + result);
         }
@@ -250,18 +261,22 @@ public class DownloadThread extends Thread {
         switch (action) {
             case NOTIFICATION_STATUS_FLAG_UNERROR:
             case NOTIFICATION_STATUS_FLAG_ERROR:
+                mBuilder.setContentTitle(mTitle);
                 mBuilder.setContentText(msg);
                 mBuilder.setProgress(0, 0, false);
                 break;
             case NOTIFICATION_STATUS_FLAG_NORMAL:
+                mBuilder.setContentTitle(mTitle);
                 mBuilder.setProgress(totalByte, currentByte, false);
                 mBuilder.setContentText("");
                 break;
             case NOTIFICATION_STATUS_FLAG_PAUSE:
+                mBuilder.setContentTitle(mTitle);
                 mBuilder.setContentText(msg);
                 mBuilder.setProgress(0, 0, false);
                 break;
             case NOTIFICATION_STATUS_FLAG_DELETE:
+                mBuilder.setContentTitle(mTitle);
                 mBuilder.setContentText(msg);
                 mBuilder.setProgress(0, 0, false);
                 mBuilder.setAutoCancel(true);
@@ -270,7 +285,8 @@ public class DownloadThread extends Thread {
                 downloadFinish(msg, currentByte, totalByte);
                 break;
         }
-        mNotificationManager.notify(mDownloadItem.getId(), mBuilder.build());
+        //mBuilder.setWhen(System.currentTimeMillis());
+        mNotificationManager.notify(mDownloadID, mBuilder.build());
     }
 
     private void downloadFinish(String msg, int currentByte, int totalByte) {
@@ -279,16 +295,16 @@ public class DownloadThread extends Thread {
         values.put(DownloadColumn.TOTAL_BYTE, totalByte);
         values.put(DownloadColumn.CURRENT_BYTE, currentByte);
         values.put(DownloadColumn.STATUS, DownloadStatus.STATUS_SUCCESSFUL);
-        int row = mDownloadManager.updateTask(mDownloadItem.getId(), values);
+        int row = mDownloadManager.updateTask(mDownloadID, values);
         if (row > 0) {
             //rename
-            File file = new File(mDownloadItem.getPath(), mDownloadItem.getName() + mDownloadItem.getSuffix());
+            File file = new File(DownloadUtils.getFileDir(), mTitle + mSuffix);
             if (mTempFile.renameTo(file)) {
                 //delete tempfile
                 mTempFile.delete();
                 PendingIntent pi = PendingIntent.getActivity(mContext, 0, DownloadUtils.installApk(mContext, file), PendingIntent.FLAG_UPDATE_CURRENT);
                 mBuilder.setContentIntent(pi);
-                mBuilder.setContentText(msg);
+                mBuilder.setContentTitle(mTitle).setContentText(msg);
                 mBuilder.setProgress(0, 0, false);//remove progressbar
             }
         }

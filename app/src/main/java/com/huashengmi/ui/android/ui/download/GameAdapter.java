@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.huashengmi.ui.android.R;
 import com.huashengmi.ui.android.ui.download.common.DownloadHelper;
@@ -47,6 +48,7 @@ public class GameAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = mInflater.inflate(R.layout.adapter_multi_download, null);
         ImageView imageView = (ImageView) view.findViewById(R.id.game_icon);
+        TextView textView = (TextView) view.findViewById(R.id.game_name);
         /*view.findViewById(R.id.btn_start).setOnClickListener(this);
         view.findViewById(R.id.btn_pause).setOnClickListener(this);
         view.findViewById(R.id.btn_resume).setOnClickListener(this);
@@ -55,6 +57,7 @@ public class GameAdapter extends BaseAdapter {
         ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.download_progress);*/
 
         final Game game = mGameList.get(position);
+        textView.setText(game.getName() + "   " +  game.getFileSize());
         Picasso.with(mContext).load(game.getIconUri()).placeholder(R.drawable.logo).resize(120, 120).into(imageView);
         view.findViewById(R.id.btn_start).setOnClickListener(new View.OnClickListener() {
             @Override
