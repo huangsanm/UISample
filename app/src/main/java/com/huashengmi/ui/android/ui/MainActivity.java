@@ -25,6 +25,7 @@ public class MainActivity extends BaseActivity {
     private CharSequence mTitle;
     private CharSequence mDrawerTitle;
     private String[] mArray;
+    private String[] mValues;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class MainActivity extends BaseActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mListView = (ListView) findViewById(R.id.drawer_navigation);
         mArray = getResources().getStringArray(R.array.ui_array);
+        mValues = getResources().getStringArray(R.array.ui_value);
 
         mTitle = mDrawerTitle = getTitle();
         mListView.setAdapter(new ArrayAdapter<String>(this,
@@ -96,7 +98,11 @@ public class MainActivity extends BaseActivity {
 
     private void selectItem(int position){
         MainFragment fragment = new MainFragment();
+        Bundle b = new Bundle();
+        b.putString("clas", mValues[position]);
+        fragment.setArguments(b);
         FragmentManager fragmentManager = getFragmentManager();
+
         fragmentManager.beginTransaction().replace(R.id.content_layout, fragment).commit();
 
         mListView.setItemChecked(position, true);

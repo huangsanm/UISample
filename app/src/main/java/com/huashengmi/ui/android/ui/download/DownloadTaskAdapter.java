@@ -76,7 +76,10 @@ public class DownloadTaskAdapter extends BaseAdapter {
             holder.mDeleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    DownloadHelper.getInstance(mContext).deleteDownload(item.getId());
+                    DownloadHelper.getInstance(mContext).deleteDownload(item.getId(), item.getPath());
+                    mItems.remove(d);
+                    UiSampleApp.mDownloadItem.remove(d.getId());
+                    notifyDataSetChanged();
                 }
             });
             holder.mPauseButton.setOnClickListener(new View.OnClickListener() {
@@ -84,13 +87,13 @@ public class DownloadTaskAdapter extends BaseAdapter {
                 public void onClick(View v) {
                     final int downloadID = item.getId();
                     Button b = (Button) v;
-                    if (item.getStatus() == DownloadStatus.STATUS_PAUSED) {
+                    if (item.getStatus() == DownloadStatus.STATUS_RUNNING) {
                         b.setText("已暂停");
-                        DownloadHelper.getInstance(mContext).resumeDownload(downloadID);
+                        DownloadHelper.getInstance(mContext).pauseDownload(downloadID);
                     }
 
-                    if (item.getStatus() == DownloadStatus.STATUS_RUNNING) {
-                        DownloadHelper.getInstance(mContext).pauseDownload(downloadID);
+                    if (item.getStatus() == DownloadStatus.STATUS_PAUSED) {
+                        DownloadHelper.getInstance(mContext).resumeDownload(downloadID);
                         b.setText("下载中");
                     }
                 }

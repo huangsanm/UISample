@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.net.Uri;
 
 import com.huashengmi.ui.android.ui.download.common.DownloadItem;
+import com.huashengmi.ui.android.ui.download.common.DownloadStatus;
 import com.huashengmi.ui.android.ui.download.common.DownloadUtils;
 import com.huashengmi.ui.android.utils.Globals;
 
@@ -85,7 +86,7 @@ public class DownloadManager {
     }
 
     public Cursor queryTask(){
-        return mResolver.query(DownLoadContentProvider.CONTENT_URI, null, null, null, null);
+        return mResolver.query(DownLoadContentProvider.CONTENT_URI, null, DownloadColumn.STATUS + "<>" + DownloadStatus.STATUS_DELETEED, null, null);
     }
 
     public String getStringVal(Cursor cursor, String columnName){

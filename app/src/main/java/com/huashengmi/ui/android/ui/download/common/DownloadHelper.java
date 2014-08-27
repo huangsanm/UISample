@@ -1,5 +1,6 @@
 package com.huashengmi.ui.android.ui.download.common;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 
@@ -9,6 +10,8 @@ import com.huashengmi.ui.android.ui.download.db.DownloadColumn;
 import com.huashengmi.ui.android.ui.download.db.DownloadManager;
 import com.huashengmi.ui.android.utils.Globals;
 import com.squareup.picasso.Picasso;
+
+import java.io.File;
 
 /**
  * Created by huangsm on 2014/7/30 0030.
@@ -64,15 +67,26 @@ public class DownloadHelper {
      * @param downloadID
      */
     public void pauseDownload(int downloadID){
-        modifyDownloadStatus(downloadID, DownloadStatus.STATUS_PAUSED);
+        ContentValues values = new ContentValues();
+        values.put(DownloadColumn.STATUS, DownloadStatus.STATUS_PAUSED);
+        int result = mDownloadManager.updateTask(downloadID, values);
+        if(result > 0){
+            modifyDownloadStatus(downloadID, DownloadStatus.STATUS_PAUSED);
+        }
     }
 
     /**
      * 删除
      * @param downloadID
      */
-    public void deleteDownload(int downloadID){
-        modifyDownloadStatus(downloadID, DownloadStatus.STATUS_DELETEED);
+    public void deleteDownload(int downloadID, String path){
+        ContentValues values = new ContentValues();
+        values.put(DownloadColumn.STATUS, DownloadStatus.STATUS_DELETEED);
+        int result = mDownloadManager.updateTask(downloadID, values);
+        if(result > 0){
+            new File(path).deleteOnExit();
+            modifyDownloadStatus(downloadID, DownloadStatus.STATUS_DELETEED);
+        }
     }
 
     /**
@@ -80,15 +94,23 @@ public class DownloadHelper {
      * @param downloadID
      */
     public void resumeDownload(int downloadID){
-        modifyDownloadStatus(downloadID, DownloadStatus.STATUS_PENDING);
+        ContentValues values = new ContentValues();
+        values.put(DownloadColumn.STATUS, DownloadStatus.STATUS_RUNNING);
+        int result = mDownloadManager.updateTask(downloadID, values);
+        if(result > 0){
+            modifyDownloadStatus(downloadID, DownloadStatus.STATUS_PENDING);
+        }
     }
 
     private void modifyDownloadStatus(int downloadID, int status){
         DownloadItem item = mDownloadManager.queryTask(downloadID);
         if(item != null){
             Intent intent = new Intent(mContext, DownloadService.class);
-            intent.putExtra(DownloadColumn.TABLE_NAME, item);
-            intent.putExtra(DownloadColumn.STATUS, status);
+            intent.putExtra(DownloadColumn._ID, downloadID);
+            intent.putExtra(DownloadColumn.NAME, item.getName());
+            intent.putExtra(DownloadColumn.URI, item.getUri());
+            intent.putExtra(DownloadColumn.SUFFIX, item.getSuffix());
+            intent.putExtra(DownloadColumn.STATUS, DownloadStatus.STATUS_RUNNING);
             mContext.startService(intent);
         }
     }

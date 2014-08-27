@@ -51,6 +51,14 @@ public class DownloadTaskActivity extends BaseActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        mDownloadItems.clear();
+        UiSampleApp.mDownloadItem.clear();
+        mDownloadContentObserver.handlerChangeData();
+    }
+
+    @Override
     protected void onDestroy() {
         getContentResolver().unregisterContentObserver(mDownloadContentObserver);
         super.onDestroy();
@@ -72,7 +80,7 @@ public class DownloadTaskActivity extends BaseActivity {
             try {
                 if(cursor != null && cursor.getCount() > 0){
                     cursor.moveToFirst();
-                    while (cursor.moveToNext()){
+                    do{
                         DownloadItem item = mDownloadManager.convertTaskItem(cursor);
 
                         if(!UiSampleApp.mDownloadItem.containsKey(item.getId())){
@@ -82,7 +90,7 @@ public class DownloadTaskActivity extends BaseActivity {
                             UiSampleApp.mDownloadItem.put(item.getId(), item);
                         }
                         mDownloadTaskAdapter.notifyDataSetChanged();
-                    }
+                    } while(cursor.moveToNext());
                 }
             }finally {
                 cursor.close();

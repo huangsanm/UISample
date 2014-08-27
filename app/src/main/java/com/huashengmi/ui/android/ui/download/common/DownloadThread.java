@@ -124,20 +124,10 @@ public class DownloadThread extends Thread {
         //HttpClient aClient = null;
         BufferedInputStream bufferedInputStream = null;
         try {
-            //TODO:
-            // aClient = new DefaultHttpClient();
             aClient = AndroidHttpClient.newInstance("Linux; Android");
-            Globals.log("AndroidHttpClient:" + mUri);
             HttpGet request = new HttpGet(mUri);
             HttpResponse response = aClient.execute(request);
-            //302、301下载跳转
-            Globals.log("AndroidHttpClient:" + response.getStatusLine().getStatusCode());
-            Header[] headers = response.getAllHeaders();
-            for (Header h : headers) {
-                Globals.log("AndroidHttpClient:name:" + h.getName() + ",value:" + h.getValue());
-            }
             long totalSize = response.getEntity().getContentLength();
-            Globals.log("AndroidHttpClient:" + totalSize);
             //check storage
             if (totalSize > 0) {
                 //更新数据库
@@ -145,24 +135,23 @@ public class DownloadThread extends Thread {
                 values.put(DownloadColumn.TOTAL_BYTE, totalSize);
                 int result = mDownloadManager.updateTask(mDownloadID, values);
                 if (result > 0) {
-                    Log.i(TAG, "update database:" + result);
+                    Globals.log("update database:" + result);
                 }
             }
             if (mTempFile.exists()) {
                 mTempSize = (int) mTempFile.length();
-                totalSize -= mTempSize;
                 request.addHeader("RANGE", "bytes=" + mTempFile.length() + "-");
                 aClient.close();
                 aClient = AndroidHttpClient.newInstance("Linux; Android");
                 response = aClient.execute(request);
             }
             long storage = DownloadUtils.getAvailableStorage();
-            if (totalSize - mTempFile.length() > storage) {
+            if (totalSize - mTempSize > storage) {
                 notifyNotification(NOTIFICATION_STATUS_FLAG_ERROR, "您的手机内存不足", 0, 0);
                 return;
             }
             RandomAccessFile outStream = new RandomAccessFile(mTempFile, "rwd");
-            outStream.seek(outStream.length());
+            outStream.seek(mTempSize);
 
             InputStream is = response.getEntity().getContent();
             byte[] buffer = new byte[BUFFER_SIZE];
@@ -170,21 +159,16 @@ public class DownloadThread extends Thread {
             int b = 0;
             long updateStart = System.currentTimeMillis();
             long updateDelta = 0;
-            int progress = 0;
-            boolean finish = true;
+            int progress = mTempSize;
             while (true) {
                 //check download status
-                Globals.log(checkDownloadCancel());
                 if (checkDownloadCancel()) {
-                    finish = false;
                     notifyNotification(NOTIFICATION_STATUS_FLAG_DELETE, "下载已被取消", 0, 0);
                     aClient.close();
                     break;
                 }
 
-                Globals.log(checkDownloadPause());
                 if (checkDownloadPause()) {
-                    finish = false;
                     notifyNotification(NOTIFICATION_STATUS_FLAG_DELETE, "暂停下载", 0, 0);
                     aClient.close();
                     break;
@@ -211,8 +195,7 @@ public class DownloadThread extends Thread {
             }
             is.close();
             //下载完成
-            Globals.log("finish:" + progress + "," + totalSize + ":" + (progress == totalSize));
-            if (finish) {
+            if (progress == totalSize) {
                 notifyNotification(NOTIFICATION_STATUS_FLAG_DONE, "下载完成，点此安装", progress, (int) totalSize);
             }
         } catch (Exception e) {

@@ -1,5 +1,6 @@
 package com.huashengmi.ui.android.ui.download.common;
 
+import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.ContentValues;
@@ -15,9 +16,6 @@ import com.huashengmi.ui.android.ui.download.db.DownloadColumn;
 import com.huashengmi.ui.android.ui.download.db.DownloadManager;
 import com.huashengmi.ui.android.utils.Globals;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -28,7 +26,6 @@ public class DownloadService extends Service {
     //线程池
     private ExecutorService mExecutor;
     private Context mContext;
-    private NotificationCompat.Builder mBuilder;
     private DownloadManager mDownloadManager;
 
     @Override
@@ -36,7 +33,6 @@ public class DownloadService extends Service {
         mContext = this;
         //mDownloadMap = Collections.synchronizedMap(new HashMap<Integer, DownloadItem>());
         mExecutor = Executors.newCachedThreadPool();
-        mBuilder = new NotificationCompat.Builder(mContext);
         mDownloadManager = new DownloadManager(getContentResolver());
         super.onCreate();
     }
@@ -83,19 +79,22 @@ public class DownloadService extends Service {
      */
     private void download(String title, int downloadID, String uri, String suffix) {
         Globals.log("title:" + title);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(mContext);
         Intent intent = new Intent(mContext, MultiDownloadActivity.class);
         PendingIntent pi = PendingIntent.getActivity(mContext, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        mBuilder.setContentIntent(pi);
-        mBuilder.setWhen(System.currentTimeMillis());
-        mBuilder.setContentTitle(title).setTicker("下载提醒");
-        setNotification();
-        mExecutor.execute(new DownloadThread(mContext, downloadID, title, uri, suffix, mBuilder));
+        builder.setContentIntent(pi);
+        builder.setWhen(System.currentTimeMillis());
+        builder.setContentTitle(title).setTicker("下载提醒");
+        builder.setLargeIcon(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.logo));
+        builder.setSmallIcon(R.drawable.download);
+        mExecutor.execute(new DownloadThread(mContext, downloadID, title, uri, suffix, builder));
     }
 
     private void modifyDownloadStatus(int downloadID, int status){
         ContentValues values  = new ContentValues();
         values.put(DownloadColumn.STATUS, status);
         int i = mDownloadManager.updateTask(downloadID, values);
+        Globals.log("iiiiiii:" + i);
         if(i > 0){
             Globals.log("modifyDownloadStatus:status:" + i + ":" + status);
         }
@@ -118,10 +117,5 @@ public class DownloadService extends Service {
                 PendingIntent.FLAG_UPDATE_CURRENT);
         return n;
     }*/
-
-    private void setNotification() {
-        mBuilder.setLargeIcon(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.logo));
-        mBuilder.setSmallIcon(R.drawable.download);
-    }
 
 }

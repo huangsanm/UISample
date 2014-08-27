@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navigationModel
+  ns = "http://schemas.android.com?import=com.android.navigation.*">
+  <locations  
+    class = "java.util.ArrayList">
+    <entry>
+      <key      
+        class = "com.android.navigation.ActivityState"      
+        className = "com.huashengmi.ui.android.ui.MainActivity">
+        <location        
+          id = "point0"        
+          x = "0"        
+          y = "0"/>
+      </key>
+      <value      
+        x = "480"      
+        y = "160"      
+        class = "com.android.navigation.Point"/>
+    </entry>
+    <entry>
+      <key      
+        class = "com.android.navigation.ActivityState"      
+        className = "com.huashengmi.ui.android.ui.download.MultiDownloadActivity">
+        <location        
+          idref = "point0"/>
+      </key>
+      <value      
+        x = "2080"      
+        y = "960"      
+        class = "com.android.navigation.Point"/>
+    </entry>
+    <entry>
+      <key      
+        class = "com.android.navigation.ActivityState"      
+        className = "com.huashengmi.ui.android.ui.download.DownloadTaskActivity">
+        <location        
+          idref = "point0"/>
+      </key>
+      <value      
+        x = "640"      
+        y = "1760"      
+        class = "com.android.navigation.Point"/>
+    </entry>
+  </locations>
+</navigationModel>
