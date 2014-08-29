@@ -3,16 +3,16 @@ package com.huashengmi.ui.android.ui.net.retrofit;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.huashengmi.ui.android.R;
 import com.huashengmi.ui.android.ui.BaseActivity;
 
-import java.util.List;
-import java.util.concurrent.Executors;
-
+import retrofit.Callback;
 import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 import retrofit.http.GET;
-import retrofit.http.Path;
 
 public class RetrofitActivity extends BaseActivity implements View.OnClickListener{
 
@@ -38,28 +38,25 @@ public class RetrofitActivity extends BaseActivity implements View.OnClickListen
         final long times = System.currentTimeMillis();
         switch (v.getId()){
             case R.id.btn_simple:
-                /*RestAdapter restAdapter = new RestAdapter.Builder()
+                RestAdapter restAdapter = new RestAdapter.Builder()
                         .setEndpoint(HOST)
                         .setLogLevel(RestAdapter.LogLevel.FULL)
+                        .setConverter(new SimpleXmlConverter())
                         .build();
                 SimpleStr simpleStr = restAdapter.create(SimpleStr.class);
-                String text = simpleStr.getSimpleText();
-                System.out.println(text);
-                mSimpleButton.setText((System.currentTimeMillis() - times) + "s");*/
+                simpleStr.getSimpleText(new Callback<String>() {
+                    @Override
+                    public void success(String s, Response response) {
+                        Toast.makeText(mContext, s + ":" + response, Toast.LENGTH_SHORT).show();
+                        mSimpleButton.setText((System.currentTimeMillis() - times) + "s");
+                    }
 
-                // Create a very simple REST adapter which points the GitHub API endpoint.
-                RestAdapter restAdapter = new RestAdapter.Builder()
-                        .setEndpoint(API_URL)
-                        .build();
+                    @Override
+                    public void failure(RetrofitError error) {
+                        mSimpleButton.setText(error.toString() + ":" + (System.currentTimeMillis() - times) + "s");
+                    }
+                });
 
-                // Create an instance of our GitHub API interface.
-                GitHub github = restAdapter.create(GitHub.class);
-
-                // Fetch and print a list of the contributors to this library.
-                List<Contributor> contributors = github.contributors("square", "retrofit");
-                for (Contributor contributor : contributors) {
-                    System.out.println(contributor.login + " (" + contributor.contributions + ")");
-                }
 
                 break;
             case R.id.btn_json:
@@ -71,22 +68,8 @@ public class RetrofitActivity extends BaseActivity implements View.OnClickListen
     public interface SimpleStr {
 
         @GET("/api/GetRsaKey?")
-        String getSimpleText();
+        void getSimpleText(Callback<String> callback);
 
     }
 
-    private static final String API_URL = "https://api.github.com";
-
-    static class Contributor {
-        String login;
-        int contributions;
-    }
-
-    interface GitHub {
-        @GET("/repos/{owner}/{repo}/contributors")
-        List<Contributor> contributors(
-                @Path("owner") String owner,
-                @Path("repo") String repo
-        );
-    }
 }
