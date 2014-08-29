@@ -49,6 +49,14 @@
             android:name=".ui.view.ProgressActivity"
             android:label="@string/title_activity_progress" >
         </activity>
+        <activity
+            android:name=".ui.net.VolleyActivity"
+            android:label="@string/title_activity_volley" >
+        </activity>
+        <activity
+            android:name=".ui.net.retrofit.RetrofitActivity"
+            android:label="@string/title_activity_retrofit" >
+        </activity>
     </application>
 
 </manifest>

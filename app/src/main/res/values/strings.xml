@@ -12,7 +12,7 @@
     </string-array>
     <string-array name="ui_value">
         <item>com.huashengmi.ui.android.ui.download.MultiDownloadActivity</item>
-        <item>Net Work</item>
+        <item>com.huashengmi.ui.android.ui.net.retrofit.RetrofitActivity</item>
         <item>Loader Image</item>
         <item>ListView</item>
         <item>com.huashengmi.ui.android.ui.view.ProgressActivity</item>
@@ -33,5 +33,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_download_task">DownloadTaskActivity</string>
     <string name="title_activity_progress">ProgressActivity</string>
+    <string name="title_activity_volley">VolleyActivity</string>
+    <string name="title_activity_retrofit">RetrofitActivity</string>
 
 </resources>
