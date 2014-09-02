@@ -11,12 +11,16 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.huashengmi.ui.android.R;
 import com.huashengmi.ui.android.utils.Globals;
 
 public class MainActivity extends BaseActivity {
 
+    private final static long EXIT_TIME = 2500;
+
+    private long mTime;
     private DrawerLayout mDrawerLayout;
     private ListView mListView;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -99,7 +103,7 @@ public class MainActivity extends BaseActivity {
     private void selectItem(int position){
         MainFragment fragment = new MainFragment();
         Bundle b = new Bundle();
-        b.putString("clas", mValues[position]);
+        b.putString(MainFragment.PARAM_ACTION, mValues[position]);
         fragment.setArguments(b);
         FragmentManager fragmentManager = getFragmentManager();
 
@@ -110,4 +114,13 @@ public class MainActivity extends BaseActivity {
         mDrawerLayout.closeDrawer(mListView);
     }
 
+    @Override
+    public void onBackPressed() {
+        if(System.currentTimeMillis() < mTime + EXIT_TIME){
+            super.onBackPressed();
+        }else{
+            Toast.makeText(mContext, "再按一次推出UiSample", Toast.LENGTH_SHORT).show();
+            mTime = System.currentTimeMillis();
+        }
+    }
 }

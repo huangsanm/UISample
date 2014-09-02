@@ -25,7 +25,12 @@
         </activity>
         <activity
             android:name=".ui.download.MultiDownloadActivity"
-            android:label="@string/title_activity_single_download" >
+            android:label="@string/title_activity_download" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.huashengmi.ui.android.ui.download" />
+            </intent-filter>
         </activity>
 
         <provider
@@ -48,14 +53,45 @@
         <activity
             android:name=".ui.view.ProgressActivity"
             android:label="@string/title_activity_progress" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.huashengmi.ui.android.ui.view" />
+            </intent-filter>
         </activity>
         <activity
-            android:name=".ui.net.VolleyActivity"
+            android:name=".ui.net.volley.VolleyActivity"
             android:label="@string/title_activity_volley" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.huashengmi.ui.android.ui.net" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".ui.net.retrofit.RetrofitActivity"
             android:label="@string/title_activity_retrofit" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.huashengmi.ui.android.ui.net" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.net.asynchttpclient.AsyncHttpClientActivity"
+            android:label="@string/title_activity_async_http_client" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.huashengmi.ui.android.ui.net" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.image.picasso.PicassoActivity"
+            android:label="@string/title_activity_picasso" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.huashengmi.ui.android.ui.image" />
+            </intent-filter>
         </activity>
     </application>
 

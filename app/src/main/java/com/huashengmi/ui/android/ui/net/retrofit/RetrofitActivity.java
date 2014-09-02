@@ -24,8 +24,6 @@ import retrofit.http.QueryMap;
 
 public class RetrofitActivity extends BaseActivity implements View.OnClickListener{
 
-    private final String HOST = "http://www.romzhijia.net";
-
     private Button mSimpleButton;
     private Button mJsonButton;
 
@@ -67,15 +65,16 @@ public class RetrofitActivity extends BaseActivity implements View.OnClickListen
                 });
                 break;
             case R.id.btn_json:
+                Map<String, String> map = new HashMap<String, String>();
+                map.put("action", "getgametop");
+                map.put("type", "7");
                 restAdapter = new RestAdapter.Builder()
                     .setEndpoint("http://data.shouyouzhijia.net")
                     .setLogLevel(RestAdapter.LogLevel.FULL)
                     .setConverter(new GsonConverter(new Gson()))
                     .build();
                 GameTest jsonGame = restAdapter.create(GameTest.class);
-                Map<String, String> map = new HashMap<String, String>();
-                map.put("action", "getgametop");
-                map.put("type", "7");
+
                 jsonGame.getGameList(map, new Callback<GameList>() {
                     @Override
                     public void success(GameList games, Response response) {

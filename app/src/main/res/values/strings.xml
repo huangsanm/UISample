@@ -11,11 +11,11 @@
         <item>Custom View</item>
     </string-array>
     <string-array name="ui_value">
-        <item>com.huashengmi.ui.android.ui.download.MultiDownloadActivity</item>
-        <item>com.huashengmi.ui.android.ui.net.retrofit.RetrofitActivity</item>
-        <item>Loader Image</item>
+        <item>com.huashengmi.ui.android.ui.download</item>
+        <item>com.huashengmi.ui.android.ui.net</item>
+        <item>com.huashengmi.ui.android.ui.image</item>
         <item>ListView</item>
-        <item>com.huashengmi.ui.android.ui.view.ProgressActivity</item>
+        <item>com.huashengmi.ui.android.ui.view</item>
     </string-array>
 
     <string name="drawer_open">Open navigation drawer</string>
@@ -29,11 +29,13 @@
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_single_download">SingleDownloadActivity</string>
+    <string name="title_activity_download">DownloadActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_download_task">DownloadTaskActivity</string>
     <string name="title_activity_progress">ProgressActivity</string>
     <string name="title_activity_volley">VolleyActivity</string>
     <string name="title_activity_retrofit">RetrofitActivity</string>
+    <string name="title_activity_async_http_client">AsyncHttpClientActivity</string>
+    <string name="title_activity_picasso">PicassoActivity</string>
 
 </resources>

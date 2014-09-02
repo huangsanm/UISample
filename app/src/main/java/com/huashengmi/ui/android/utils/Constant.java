@@ -10,4 +10,6 @@ public class Constant {
 
     public static String jsonStr = "http://data.shouyouzhijia.net/youxi.ashx?action=getgametop&type=7";
 
+
+
 }

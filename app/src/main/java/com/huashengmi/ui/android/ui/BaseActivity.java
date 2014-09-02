@@ -14,8 +14,11 @@ import com.huashengmi.ui.android.ui.net.volley.VolleyManager;
 
 public class BaseActivity extends FragmentActivity {
 
+    public final String HOST = "http://www.romzhijia.net";
+
     public Context mContext;
     public ImageLoader mImageLoader;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
