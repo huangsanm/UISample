@@ -29,24 +29,24 @@ public class VolleyManager {
         return mVolleyManager;
     }
 
-    public static RequestQueue getRequestQueue(){
+    public RequestQueue getRequestQueue(){
         if(mRequestQueue != null)
             return mRequestQueue;
         throw new RuntimeException("RequestQueue is null");
     }
 
-    public static void addRequest(Request<?> request, Object tag){
+    public void addRequest(Request<?> request, Object tag){
         if(tag != null){
             request.setTag(tag);
         }
         mRequestQueue.add(request);
     }
 
-    public static void cancelAll(Object tag) {
+    public void cancelAll(Object tag) {
         mRequestQueue.cancelAll(tag);
     }
 
-    public static ImageLoader getImageLoader() {
+    public ImageLoader getImageLoader() {
         if (mImageLoader != null) {
             return mImageLoader;
         } else {

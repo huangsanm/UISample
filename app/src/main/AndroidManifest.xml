@@ -51,10 +51,11 @@
             android:label="@string/title_activity_download_task" >
         </activity>
         <activity
-            android:name=".ui.view.ProgressActivity"
+            android:name=".ui.view.wheel.ProgressActivity"
             android:label="@string/title_activity_progress" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="com.huashengmi.ui.android.ui.view" />
             </intent-filter>
         </activity>
@@ -90,7 +91,44 @@
             android:label="@string/title_activity_picasso" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="com.huashengmi.ui.android.ui.image" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.image.volley.VolleyImageActivity"
+            android:label="@string/title_activity_volley_image" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.huashengmi.ui.android.ui.image" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.image.uil.UniversalImageLoaderActivity"
+            android:label="@string/title_activity_universal_image_loader" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.huashengmi.ui.android.ui.image" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.image.imagehelper.ImageHelperActivity"
+            android:label="@string/title_activity_image_helper" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.huashengmi.ui.android.ui.image" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.view.turntable.SlyderActivity"
+            android:label="@string/title_activity_slyder" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.huashengmi.ui.android.ui.view" />
             </intent-filter>
         </activity>
     </application>

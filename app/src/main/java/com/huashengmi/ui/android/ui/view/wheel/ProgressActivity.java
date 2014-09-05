@@ -1,4 +1,4 @@
-package com.huashengmi.ui.android.ui.view;
+package com.huashengmi.ui.android.ui.view.wheel;
 
 import android.app.Activity;
 import android.graphics.Bitmap;

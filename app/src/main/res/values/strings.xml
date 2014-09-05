@@ -37,5 +37,9 @@
     <string name="title_activity_retrofit">RetrofitActivity</string>
     <string name="title_activity_async_http_client">AsyncHttpClientActivity</string>
     <string name="title_activity_picasso">PicassoActivity</string>
+    <string name="title_activity_volley_image">VolleyImageActivity</string>
+    <string name="title_activity_universal_image_loader">UniversalImageLoaderActivity</string>
+    <string name="title_activity_image_helper">ImageHelperActivity</string>
+    <string name="title_activity_slyder">SlyderActivity</string>
 
 </resources>

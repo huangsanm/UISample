@@ -119,7 +119,7 @@ public class MainActivity extends BaseActivity {
         if(System.currentTimeMillis() < mTime + EXIT_TIME){
             super.onBackPressed();
         }else{
-            Toast.makeText(mContext, "再按一次推出UiSample", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "再按一次退出UiSample", Toast.LENGTH_SHORT).show();
             mTime = System.currentTimeMillis();
         }
     }

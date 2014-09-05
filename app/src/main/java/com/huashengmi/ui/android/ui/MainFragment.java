@@ -15,11 +15,6 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.huashengmi.ui.android.R;
-import com.huashengmi.ui.android.ui.download.MultiDownloadActivity;
-import com.huashengmi.ui.android.ui.view.ProgressActivity;
-import com.huashengmi.ui.android.utils.Globals;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;

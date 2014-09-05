@@ -1,4 +1,4 @@
-package com.huashengmi.ui.android.ui.view;
+package com.huashengmi.ui.android.ui.view.wheel;
 
 import android.content.Context;
 import android.content.res.TypedArray;
