@@ -39,7 +39,6 @@ public class MainFragment extends ListFragment {
         mActivity = (MainActivity) getActivity();
         mPackageManager = mActivity.getPackageManager();
 
-
         SimpleAdapter adapter = new SimpleAdapter(mActivity, getListData(),
                 android.R.layout.simple_list_item_1, new String[]{"title"},
                 new int[]{android.R.id.text1});

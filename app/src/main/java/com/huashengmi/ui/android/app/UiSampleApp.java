@@ -4,14 +4,11 @@ import android.app.Application;
 import android.content.Context;
 
 import com.huashengmi.ui.android.ui.download.common.DownloadItem;
-import com.huashengmi.ui.android.ui.download.common.DownloadUtils;
-import com.huashengmi.ui.android.utils.Globals;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,7 +27,7 @@ public class UiSampleApp extends Application {
         initImageLoader(this);
     }
 
-    public static void initImageLoader(Context context) {
+    public void initImageLoader(Context context) {
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
                 .threadPriority(Thread.NORM_PRIORITY - 2)
                 .denyCacheImageMultipleSizesInMemory()

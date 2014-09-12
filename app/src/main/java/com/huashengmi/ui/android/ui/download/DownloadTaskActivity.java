@@ -13,7 +13,6 @@ import com.huashengmi.ui.android.ui.BaseActivity;
 import com.huashengmi.ui.android.ui.download.common.DownloadItem;
 import com.huashengmi.ui.android.ui.download.db.DownLoadContentProvider;
 import com.huashengmi.ui.android.ui.download.db.DownloadManager;
-import com.huashengmi.ui.android.utils.Globals;
 
 import java.util.ArrayList;
 import java.util.List;

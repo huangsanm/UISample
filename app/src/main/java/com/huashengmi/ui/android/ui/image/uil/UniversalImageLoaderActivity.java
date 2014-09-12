@@ -6,7 +6,6 @@ import android.os.Bundle;
 import com.huashengmi.ui.android.R;
 import com.huashengmi.ui.android.ui.image.picasso.ImageAdapter;
 import com.huashengmi.ui.android.utils.DataUtils;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
 
 public class UniversalImageLoaderActivity extends ListActivity {
 

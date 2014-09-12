@@ -10,12 +10,10 @@ import com.huashengmi.ui.android.ui.BaseActivity;
 import com.huashengmi.ui.android.utils.Constant;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.TextHttpResponseHandler;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class AsyncHttpClientActivity extends BaseActivity implements View.OnClickListener {
 

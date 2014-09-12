@@ -6,9 +6,6 @@ import android.os.Bundle;
 import com.huashengmi.ui.android.R;
 import com.huashengmi.ui.android.utils.DataUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class PicassoActivity extends ListActivity {
 
     @Override

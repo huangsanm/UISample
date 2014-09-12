@@ -11,9 +11,6 @@ import com.huashengmi.ui.android.ui.download.common.DownloadStatus;
 import com.huashengmi.ui.android.ui.download.common.DownloadUtils;
 import com.huashengmi.ui.android.utils.Globals;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by huangsm on 2014/7/28 0028.
  * Email:huangsanm@foxmail.com

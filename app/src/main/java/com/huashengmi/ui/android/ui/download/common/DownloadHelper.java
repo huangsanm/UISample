@@ -4,12 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 
-import com.huashengmi.ui.android.R;
 import com.huashengmi.ui.android.ui.download.Game;
 import com.huashengmi.ui.android.ui.download.db.DownloadColumn;
 import com.huashengmi.ui.android.ui.download.db.DownloadManager;
 import com.huashengmi.ui.android.utils.Globals;
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
 

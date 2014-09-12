@@ -1,7 +1,5 @@
 package com.huashengmi.ui.android.ui.download;
 
-import com.huashengmi.ui.android.ui.download.Game;
-
 import java.util.List;
 
 /**

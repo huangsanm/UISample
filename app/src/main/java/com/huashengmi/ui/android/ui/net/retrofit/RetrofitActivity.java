@@ -8,10 +8,8 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.huashengmi.ui.android.R;
 import com.huashengmi.ui.android.ui.BaseActivity;
-import com.huashengmi.ui.android.utils.Constant;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import retrofit.Callback;

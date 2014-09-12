@@ -5,28 +5,20 @@ import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Context;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 
 import com.huashengmi.ui.android.ui.download.db.DownloadColumn;
 import com.huashengmi.ui.android.ui.download.db.DownloadManager;
 import com.huashengmi.ui.android.ui.download.http.AndroidHttpClient;
 import com.huashengmi.ui.android.utils.Globals;
 
-import org.apache.http.Header;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.params.ClientPNames;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.HttpParams;
 
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.RandomAccessFile;
-import java.util.Map;
 
 /**
  * Created by huangsm on 2014/7/28 0028.

@@ -9,13 +9,17 @@
         <item>Loader Image</item>
         <item>ListView</item>
         <item>Custom View</item>
+        <item>Adv</item>
+        <item>Integral</item>
     </string-array>
     <string-array name="ui_value">
         <item>com.huashengmi.ui.android.ui.download</item>
         <item>com.huashengmi.ui.android.ui.net</item>
         <item>com.huashengmi.ui.android.ui.image</item>
-        <item>ListView</item>
+        <item>com.huashengmi.ui.android.ui.listview</item>
         <item>com.huashengmi.ui.android.ui.view</item>
+        <item>com.huashengmi.ui.android.ui.adv</item>
+        <item>com.huashengmi.ui.android.ui.integral</item>
     </string-array>
 
     <string name="drawer_open">Open navigation drawer</string>
@@ -41,5 +45,19 @@
     <string name="title_activity_universal_image_loader">UniversalImageLoaderActivity</string>
     <string name="title_activity_image_helper">ImageHelperActivity</string>
     <string name="title_activity_slyder">SlyderActivity</string>
+    <string name="title_activity_adv360">Adv360Activity</string>
+    <string name="title_activity_load_more">LoadMoreActivity</string>
+    <string name="title_activity_swipe_refresh">SwipeRefreshActivity</string>
+    <string name="title_activity_refresh">RefreshActivity</string>
+    <string name="release_refresh">松开刷新</string>
+    <string name="release_load">松开加载</string>
+    <string name="pullup_refresh">上拉加载</string>
+    <string name="pulldown_refresh">下拉刷新</string>
+    <string name="last_modified">上次更新</string>
+    <string name="recently_modified">最近更新</string>
+    <string name="refreshing">正在刷新…</string>
+    <string name="title_activity_start">StartActivity</string>
+    <string name="title_activity_staggered_grid_view">StaggeredGridViewActivity</string>
+    <string name="title_activity_robo_guice">RoboGuiceActivity</string>
 
 </resources>

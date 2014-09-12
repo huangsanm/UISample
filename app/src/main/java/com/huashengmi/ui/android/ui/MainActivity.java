@@ -14,7 +14,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.huashengmi.ui.android.R;
-import com.huashengmi.ui.android.utils.Globals;
 
 public class MainActivity extends BaseActivity {
 
@@ -36,7 +35,6 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         buildComponent();
-
     }
 
     private void buildComponent() {
@@ -65,6 +63,8 @@ public class MainActivity extends BaseActivity {
             }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+        selectItem(0);
     }
 
     @Override
