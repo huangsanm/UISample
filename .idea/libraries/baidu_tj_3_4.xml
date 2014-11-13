@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="baidu_tj_3_4">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/app/libs/baidu_tj_3_4.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
