@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.huashengmi.ui.android" >
@@ -221,3 +222,219 @@
     </application>
 
 </manifest>
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.huashengmi.ui.android" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+        android:name="com.huashengmi.ui.android.app.UiSampleApp"
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.huashengmi.ui.android.ui.StartActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.huashengmi.ui.android.ui.MainActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.huashengmi.ui.android.ui.download.MultiDownloadActivity"
+            android:label="@string/title_activity_download" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.huashengmi.ui.android.ui.download" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="com.huashengmi.ui.android.ui.download.db.DownLoadContentProvider"
+            android:authorities="com.huashengmi.ui.android.ui.download"
+            android:enabled="true"
+            android:exported="true" />
+
+        <service
+            android:name="com.huashengmi.ui.android.ui.download.common.DownloadService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name="com.huashengmi.ui.android.ui.download.DownloadTaskActivity"
+            android:label="@string/title_activity_download_task" />
+        <activity
+            android:name="com.huashengmi.ui.android.ui.view.wheel.ProgressActivity"
+            android:label="@string/title_activity_progress" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.huashengmi.ui.android.ui.view" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.huashengmi.ui.android.ui.net.volley.VolleyActivity"
+            android:label="@string/title_activity_volley" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.huashengmi.ui.android.ui.net" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.huashengmi.ui.android.ui.net.retrofit.RetrofitActivity"
+            android:label="@string/title_activity_retrofit" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.huashengmi.ui.android.ui.net" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.huashengmi.ui.android.ui.net.asynchttpclient.AsyncHttpClientActivity"
+            android:label="@string/title_activity_async_http_client" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.huashengmi.ui.android.ui.net" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.huashengmi.ui.android.ui.image.picasso.PicassoActivity"
+            android:label="@string/title_activity_picasso" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.huashengmi.ui.android.ui.image" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.huashengmi.ui.android.ui.image.volley.VolleyImageActivity"
+            android:label="@string/title_activity_volley_image" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.huashengmi.ui.android.ui.image" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.huashengmi.ui.android.ui.image.uil.UniversalImageLoaderActivity"
+            android:label="@string/title_activity_universal_image_loader" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.huashengmi.ui.android.ui.image" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.huashengmi.ui.android.ui.image.imagehelper.ImageHelperActivity"
+            android:label="@string/title_activity_image_helper" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.huashengmi.ui.android.ui.image" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.huashengmi.ui.android.ui.view.turntable.SlyderActivity"
+            android:label="@string/title_activity_slyder" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.huashengmi.ui.android.ui.view" />
+            </intent-filter>
+        </activity>
+
+        <!-- 渠道 -->
+        <meta-data
+            android:name="BaiduMobAd_CHANNEL"
+            android:value="wandoujia" />
+        <!-- 您从百度网站获取的APP	KEY -->
+        <meta-data
+            android:name="BaiduMobAd_STAT_ID"
+            android:value="9ce6e45d6f" />
+        <!-- end -->
+        <activity
+            android:name="com.huashengmi.ui.android.ui.listview.LoadMoreActivity"
+            android:label="@string/title_activity_load_more" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.huashengmi.ui.android.ui.listview" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.huashengmi.ui.android.ui.listview.SwipeRefreshActivity"
+            android:label="@string/title_activity_swipe_refresh" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.huashengmi.ui.android.ui.listview" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.huashengmi.ui.android.ui.listview.RefreshActivity"
+            android:label="@string/title_activity_refresh" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.huashengmi.ui.android.ui.listview" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.huashengmi.ui.android.ui.view.staggerdgrid.StaggeredGridViewActivity"
+            android:label="@string/title_activity_staggered_grid_view" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.huashengmi.ui.android.ui.view" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.huashengmi.ui.android.ui.view.roboguice.RoboGuiceActivity"
+            android:label="@string/title_activity_robo_guice" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.huashengmi.ui.android.ui.view" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.huashengmi.ui.android.ui.view.DragViewActivity"
+            android:label="@string/title_activity_drag_view" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.huashengmi.ui.android.ui.view" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
+>>>>>>> 631c9c321663ff4eb9d609dedf61f8834c9ae40c
