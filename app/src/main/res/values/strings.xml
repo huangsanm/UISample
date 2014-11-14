@@ -59,5 +59,7 @@
     <string name="title_activity_start">StartActivity</string>
     <string name="title_activity_staggered_grid_view">StaggeredGridViewActivity</string>
     <string name="title_activity_robo_guice">RoboGuiceActivity</string>
+    <string name="title_activity_circle">CircleActivity</string>
+    <string name="title_activity_circle_header">CircleHeaderActivity</string>
 
 </resources>

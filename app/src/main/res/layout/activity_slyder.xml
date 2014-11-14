@@ -1,10 +1,60 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:circle="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
 
-    <TextView
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <com.huashengmi.ui.android.ui.view.turntable.CircleLayout
+        android:id="@+id/main_circle_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        circle:firstChildPosition="South"
+        circle:isRotating="true"
+        circle:rotateToCenter="true">
 
-</RelativeLayout>
+        <com.huashengmi.ui.android.ui.view.turntable.CircleImageView
+            android:id="@+id/main_1"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/main_circle"
+            circle:name="@string/app_name" />
+
+        <com.huashengmi.ui.android.ui.view.turntable.CircleImageView
+            android:id="@+id/main_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/main_circle"
+            circle:name="@string/app_name" />
+
+        <com.huashengmi.ui.android.ui.view.turntable.CircleImageView
+            android:id="@+id/main_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/main_circle"
+            circle:name="@string/app_name" />
+
+        <com.huashengmi.ui.android.ui.view.turntable.CircleImageView
+            android:id="@+id/main_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/main_circle"
+            circle:name="@string/app_name" />
+
+        <com.huashengmi.ui.android.ui.view.turntable.CircleImageView
+            android:id="@+id/main_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/main_circle"
+            circle:name="@string/app_name" />
+
+        <com.huashengmi.ui.android.ui.view.turntable.CircleImageView
+            android:id="@+id/main_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/main_circle"
+            circle:name="@string/app_name" />
+    </com.huashengmi.ui.android.ui.view.turntable.CircleLayout>
+
+</LinearLayout>

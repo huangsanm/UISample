@@ -50,7 +50,6 @@ public class ProgressActivity extends Activity {
                     try {
                         Thread.sleep(15);
                     } catch (InterruptedException e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
                 }
