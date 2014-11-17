@@ -22,6 +22,7 @@ public class RoboGuiceActivity extends RoboActivity implements View.OnClickListe
     @InjectView(R.id.editText)
     private EditText mEditText;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

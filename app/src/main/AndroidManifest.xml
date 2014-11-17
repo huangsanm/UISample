@@ -20,13 +20,13 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-        android:name="com.huashengmi.ui.android.app.UiSampleApp"
+        android:name=".app.UiSampleApp"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.huashengmi.ui.android.ui.StartActivity"
+            android:name=".ui.StartActivity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
             <intent-filter>
@@ -36,12 +36,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.huashengmi.ui.android.ui.MainActivity"
+            android:name=".ui.MainActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.huashengmi.ui.android.ui.download.MultiDownloadActivity"
+            android:name=".ui.download.MultiDownloadActivity"
             android:label="@string/title_activity_download" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -51,21 +51,21 @@
         </activity>
 
         <provider
-            android:name="com.huashengmi.ui.android.ui.download.db.DownLoadContentProvider"
+            android:name=".ui.download.db.DownLoadContentProvider"
             android:authorities="com.huashengmi.ui.android.ui.download"
             android:enabled="true"
             android:exported="true" />
 
         <service
-            android:name="com.huashengmi.ui.android.ui.download.common.DownloadService"
+            android:name=".ui.download.common.DownloadService"
             android:enabled="true"
             android:exported="true" />
 
         <activity
-            android:name="com.huashengmi.ui.android.ui.download.DownloadTaskActivity"
+            android:name=".ui.download.DownloadTaskActivity"
             android:label="@string/title_activity_download_task" />
         <activity
-            android:name="com.huashengmi.ui.android.ui.view.wheel.ProgressActivity"
+            android:name=".ui.view.wheel.ProgressActivity"
             android:label="@string/title_activity_progress" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -74,7 +74,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.huashengmi.ui.android.ui.net.volley.VolleyActivity"
+            android:name=".ui.net.volley.VolleyActivity"
             android:label="@string/title_activity_volley" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -83,7 +83,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.huashengmi.ui.android.ui.net.retrofit.RetrofitActivity"
+            android:name=".ui.net.retrofit.RetrofitActivity"
             android:label="@string/title_activity_retrofit" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -92,7 +92,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.huashengmi.ui.android.ui.net.asynchttpclient.AsyncHttpClientActivity"
+            android:name=".ui.net.asynchttpclient.AsyncHttpClientActivity"
             android:label="@string/title_activity_async_http_client" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -101,7 +101,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.huashengmi.ui.android.ui.image.picasso.PicassoActivity"
+            android:name=".ui.image.picasso.PicassoActivity"
             android:label="@string/title_activity_picasso" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -110,7 +110,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.huashengmi.ui.android.ui.image.volley.VolleyImageActivity"
+            android:name=".ui.image.volley.VolleyImageActivity"
             android:label="@string/title_activity_volley_image" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -119,7 +119,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.huashengmi.ui.android.ui.image.uil.UniversalImageLoaderActivity"
+            android:name=".ui.image.uil.UniversalImageLoaderActivity"
             android:label="@string/title_activity_universal_image_loader" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -128,7 +128,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.huashengmi.ui.android.ui.image.imagehelper.ImageHelperActivity"
+            android:name=".ui.image.imagehelper.ImageHelperActivity"
             android:label="@string/title_activity_image_helper" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -137,7 +137,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.huashengmi.ui.android.ui.view.turntable.SlyderActivity"
+            android:name=".ui.view.turntable.SlyderActivity"
             android:label="@string/title_activity_slyder" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -156,7 +156,7 @@
             android:value="9ce6e45d6f" />
         <!-- end -->
         <activity
-            android:name="com.huashengmi.ui.android.ui.listview.LoadMoreActivity"
+            android:name=".ui.listview.LoadMoreActivity"
             android:label="@string/title_activity_load_more" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -165,7 +165,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.huashengmi.ui.android.ui.listview.SwipeRefreshActivity"
+            android:name=".ui.listview.SwipeRefreshActivity"
             android:label="@string/title_activity_swipe_refresh" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -174,7 +174,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.huashengmi.ui.android.ui.listview.RefreshActivity"
+            android:name=".ui.listview.RefreshActivity"
             android:label="@string/title_activity_refresh" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -183,7 +183,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.huashengmi.ui.android.ui.view.staggerdgrid.StaggeredGridViewActivity"
+            android:name=".ui.view.staggerdgrid.StaggeredGridViewActivity"
             android:label="@string/title_activity_staggered_grid_view" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -192,7 +192,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.huashengmi.ui.android.ui.view.roboguice.RoboGuiceActivity"
+            android:name=".ui.view.roboguice.RoboGuiceActivity"
             android:label="@string/title_activity_robo_guice" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -201,8 +201,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.huashengmi.ui.android.ui.view.DragViewActivity"
-            android:label="@string/title_activity_drag_view" >
+            android:name=".ui.view.circle.CircleActivity"
+            android:label="@string/title_activity_circle" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.huashengmi.ui.android.ui.view" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.view.circle.CircleHeaderActivity"
+            android:label="@string/title_activity_circle_header" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

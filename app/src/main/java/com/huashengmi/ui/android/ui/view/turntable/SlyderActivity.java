@@ -1,42 +1,50 @@
 package com.huashengmi.ui.android.ui.view.turntable;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
+import android.view.View;
+import android.widget.Toast;
 
-public class SlyderActivity extends Activity {
+import com.huashengmi.ui.android.R;
 
-    private SlyderView slyderView;
-    private MyHandler handler;
+import roboguice.activity.RoboActivity;
+import roboguice.inject.InjectView;
+
+public class SlyderActivity extends RoboActivity implements View.OnClickListener {
+
+    @InjectView(R.id.main_1)
+    private CircleImageView mOneCircleImageView;
+
+    @InjectView(R.id.main_2)
+    private CircleImageView mTwoCircleImageView;
+
+    @InjectView(R.id.main_3)
+    private CircleImageView mThreeCircleImageView;
+
+    @InjectView(R.id.main_4)
+    private CircleImageView mFourCircleImageView;
+
+    @InjectView(R.id.main_5)
+    private CircleImageView mFiveCircleImageView;
+
+    @InjectView(R.id.main_6)
+    private CircleImageView mSixCircleImageView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        slyderView = new SlyderView(this);
-        setContentView(slyderView);
-        slyderView.play();
-        handler = new MyHandler();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(5 * 1000);
-                } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                handler.sendEmptyMessage(1);
-            }
-        }).start();
+        setContentView(R.layout.activity_slyder);
 
+        mOneCircleImageView.setOnClickListener(this);
+        mTwoCircleImageView.setOnClickListener(this);
+        mThreeCircleImageView.setOnClickListener(this);
+        mFourCircleImageView.setOnClickListener(this);
+        mFiveCircleImageView.setOnClickListener(this);
+        mSixCircleImageView.setOnClickListener(this);
     }
 
-    private class MyHandler extends Handler {
-        @Override
-        public void handleMessage(Message msg) {
-            //停止在那个位置
-            slyderView.stop(3);
-        }
+    @Override
+    public void onClick(View v) {
+        Toast.makeText(this, "" + v.getId(), Toast.LENGTH_SHORT).show();
     }
 }

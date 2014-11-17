@@ -1,6 +1,7 @@
 package com.huashengmi.ui.android.ui;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -14,6 +15,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.huashengmi.ui.android.R;
+import com.huashengmi.ui.android.ui.listview.LoadMoreActivity;
 
 public class MainActivity extends BaseActivity {
 
