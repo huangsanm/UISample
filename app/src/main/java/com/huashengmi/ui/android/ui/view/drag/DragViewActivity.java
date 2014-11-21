@@ -1,4 +1,4 @@
-package com.huashengmi.ui.android.ui.view;
+package com.huashengmi.ui.android.ui.view.drag;
 
 import android.graphics.Rect;
 import android.os.Bundle;

@@ -191,6 +191,13 @@
                 <category android:name="com.huashengmi.ui.android.ui.view" />
             </intent-filter>
         </activity>
+        <activity android:name="com.huashengmi.ui.android.ui.view.drag.DragViewActivity"
+            android:label="@string/title_activity_drag_view">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.huashengmi.ui.android.ui.view" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.view.roboguice.RoboGuiceActivity"
             android:label="@string/title_activity_robo_guice" >
