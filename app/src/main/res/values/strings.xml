@@ -62,5 +62,8 @@
     <string name="title_activity_drag_view">DragViewActivity</string>
     <string name="title_activity_circle">CircleActivity</string>
     <string name="title_activity_circle_header">CircleHeaderActivity</string>
+    <string name="title_activity_android_annotation">AndroidAnnotationActivity</string>
+    <string name="title_activity_aasub">AASubActivity</string>
+    <string name="title_activity_chart">ChartActivity</string>
 
 </resources>

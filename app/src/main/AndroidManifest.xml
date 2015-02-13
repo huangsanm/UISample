@@ -191,10 +191,12 @@
                 <category android:name="com.huashengmi.ui.android.ui.view" />
             </intent-filter>
         </activity>
-        <activity android:name="com.huashengmi.ui.android.ui.view.drag.DragViewActivity"
-            android:label="@string/title_activity_drag_view">
+        <activity
+            android:name=".ui.view.drag.DragViewActivity"
+            android:label="@string/title_activity_drag_view" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="com.huashengmi.ui.android.ui.view" />
             </intent-filter>
         </activity>
@@ -222,6 +224,30 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="com.huashengmi.ui.android.ui.view" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.view.androidannotation.AndroidAnnotationActivity_"
+            android:label="@string/title_activity_android_annotation" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.huashengmi.ui.android.ui.view" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.view.androidannotation.AASubActivity_"
+            android:label="@string/title_activity_aasub" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.huashengmi.ui.android.ui.view" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.view.chart.ChartActivity"
+            android:label="@string/title_activity_chart" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.huashengmi.ui.android.ui.view" />
             </intent-filter>
         </activity>
