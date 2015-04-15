@@ -11,6 +11,7 @@
         <item>Custom View</item>
         <item>Adv</item>
         <item>Integral</item>
+        <item>Other</item>
     </string-array>
     <string-array name="ui_value">
         <item>com.huashengmi.ui.android.ui.download</item>
@@ -20,6 +21,7 @@
         <item>com.huashengmi.ui.android.ui.view</item>
         <item>com.huashengmi.ui.android.ui.adv</item>
         <item>com.huashengmi.ui.android.ui.integral</item>
+        <item>com.huashengmi.ui.android.ui.baidu</item>
     </string-array>
 
     <string name="drawer_open">Open navigation drawer</string>
@@ -65,5 +67,6 @@
     <string name="title_activity_android_annotation">AndroidAnnotationActivity</string>
     <string name="title_activity_aasub">AASubActivity</string>
     <string name="title_activity_chart">ChartActivity</string>
+    <string name="title_activity_baidu_push">BaiduPushActivity</string>
 
 </resources>

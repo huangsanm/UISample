@@ -3,6 +3,7 @@ package com.huashengmi.ui.android.app;
 import android.app.Application;
 import android.content.Context;
 
+import com.baidu.frontia.FrontiaApplication;
 import com.huashengmi.ui.android.ui.download.common.DownloadItem;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -16,7 +17,7 @@ import java.util.Map;
  * Created by huangsm on 2014/7/30 0030.
  * Email:huangsanm@foxmail.com
  */
-public class UiSampleApp extends Application {
+public class UiSampleApp extends FrontiaApplication {
 
     public static Map<Integer, DownloadItem> mDownloadItem = new HashMap<Integer, DownloadItem>();
 
